@@ -20,7 +20,7 @@ public class FileDownloadController {
         response.setContentType("application/msword");
         response.setHeader("Content-Disposition", "attachment; filename=\"CV_Aleksey_Kazarikin_Java_BE_Developer.docx\"");
 
-        String pathDownloadFile = System.getProperty("user.dir").concat("\\target\\classes\\static\\downloads\\docs\\CV_Aleksey_Kazarikin_Java_BE_Developer.docx");
+        String pathDownloadFile = "/app/target/classes/static/downloads/docs/CV_Aleksey_Kazarikin_Java_BE_Developer.docx";
 //        System.out.println(pathDownloadFile);
 //        System.out.println(System.getProperty("user.dir"));
         InputStreamResource resource = new InputStreamResource(new FileInputStream(pathDownloadFile));
