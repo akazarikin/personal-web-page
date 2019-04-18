@@ -7,10 +7,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.net.URLDecoder;
 
 
 @RestController
@@ -22,9 +20,9 @@ public class FileDownloadController {
         response.setContentType("application/msword");
         response.setHeader("Content-Disposition", "attachment; filename=\"CV_Aleksey_Kazarikin_Java_BE_Developer.docx\"");
 
-        String pathDownloadFile = this.getClass().getClassLoader().getResource("").getPath().concat("static/downloads/docs/CV_Aleksey_Kazarikin_Java_BE_Developer.docx");
+        String pathDownloadFile = System.getProperty("user.dir").concat("\\target\\classes\\static\\downloads\\docs\\CV_Aleksey_Kazarikin_Java_BE_Developer.docx");
 //        System.out.println(pathDownloadFile);
-
+//        System.out.println(System.getProperty("user.dir"));
         InputStreamResource resource = new InputStreamResource(new FileInputStream(pathDownloadFile));
         return resource;
     }
