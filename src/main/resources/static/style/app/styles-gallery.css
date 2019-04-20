@@ -339,8 +339,7 @@
 .clearfix:after {
   clear: both;
 }
-body,
-html {
+body, html {
   min-height: 100%;
   font-family: circular, 'segoe ui', sans-serif;
   color: #444a50;
@@ -393,24 +392,22 @@ section.wm.dark-text {
 /*h4 {*/
 /*  font-size: 1.25em;*/
 /*}*/
-/*h1,*/
-/*h2,*/
-/*h3,*/
-/*h4 {*/
+/*h1, h2, h3, h4 {*/
 /*  font-weight: 400;*/
 /*}*/
-h1.light,
-h2.light,
-h3.light,
-h4.light {
-  opacity: 0.65;
-}
-h1.strong,
-h2.strong,
-h3.strong,
-h4.strong {
-  font-weight: 700;
-}
+
+/*h1.light,*/
+/*h2.light,*/
+/*h3.light,*/
+/*h4.light {*/
+/*  opacity: 0.65;*/
+/*}*/
+/*h1.strong,*/
+/*h2.strong,*/
+/*h3.strong,*/
+/*h4.strong {*/
+/*  font-weight: 700;*/
+/*}*/
 @media (max-width: 727px) {
   h1 {
     font-size: 48px;
@@ -429,9 +426,7 @@ hr {
   background: rgba(85, 102, 136, 0.25);
   border: none;
 }
-p {
-  margin-bottom: 10px;
-}
+
 p.light {
   opacity: 0.65;
 }
@@ -496,6 +491,7 @@ ul.features.small li {
 }
 canvas {
   display: block;
+  border-radius: .5em;
   animation: fadein 1s;
   user-select: none;
 }
@@ -538,18 +534,6 @@ canvas {
   opacity: 0.4;
   font-size: 12px;
 }
-/*.logo {
-  @ww: 50px; display: block;
-  position:absolute; top: 20px; left: 50%;
-  margin-left: -@ww/2;
-  width: @ww; height: @ww;
-  img { width: @ww; height: @ww; }
-  .logo-dark {display: none;}
-  .dark-text & {
-    .logo-light {display:none;}
-    .logo-dark {display: block;}
-  }
-}*/
 .btn {
   color: inherit;
   display: inline-block;
@@ -578,31 +562,7 @@ canvas {
     bottom: 20px;
   }
 }
-/*.nav {
-  width: 100%;
-  background: #def * 0.9;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  .nav-label {
-    display: inline-block;
-    padding: 15px 20px;
-    font-size: 16px;
-    line-height: 20px;
-    opacity: 0.75;
-    text-transform: uppercase;
-  }
-  .nav-item {
-    display: inline-block;
-    padding: 15px 25px;
-    font-size: 24px;
-    cursor: pointer;
-    font-weight: bold;
-    &:hover { background: rgba(0,0,0,0.15); }
-    &.selected { background: white; }
-  }
-}*/
+
 .container {
   max-width: 1200px;
 }
@@ -615,76 +575,14 @@ canvas {
 .inner.shadow {
   text-shadow: 0 5px 50px rgba(0, 0, 0, 0.5);
 }
-.gallery .item {
-  position: relative;
-  min-height: 162px;
-  margin-bottom: 30px;
-  border-radius: 3px;
-  background: #d5d4d4;
-  background-position: center;
-  cursor: pointer;
-  transition: all 0.1s;
-  background-size: cover;
-  color: white;
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
-  text-transform: capitalize;
-}
-.gallery .item.birds,
-.gallery .item.clouds,
-.gallery .item.ripple,
-.gallery .item.fog {
-  color: #2b2928;
-  text-shadow: 0 1px 8px rgba(255, 255, 255, 0.3);
-}
-.gallery .item:hover {
-  opacity: 0.85;
-  transform: scale(1.04);
-}
+
 @media (max-width: 727px) {
   .gallery .item {
     margin-bottom: 20px;
   }
 }
-.gallery .label {
-  font-size: 32px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1;
-}
-.gallery img {
-  display: block;
-  max-width: 100%;
-  border-radius: 3px;
-  transition: all 0.1s;
-}
-.usage-cont {
-  width: 340px;
-  padding: 15px;
-  background: white;
-  position: absolute;
-  right: 30px;
-  top: 30px;
-  border-radius: 5px;
-  color: #2b2928;
-  text-align: left;
-  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
-  z-index: 100 !important;
-}
-.usage-cont .close-btn {
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 10px;
-  text-decoration: none;
-  color: #2b2928;
-  font-size: 20px;
-  outline: none;
-}
-.usage-cont .close-btn:hover {
-  opacity: 0.75;
-}
+
+
 @media (max-width: 727px) {
   .usage-cont {
     width: calc(100% - 30px);
@@ -720,28 +618,7 @@ canvas {
     font-size: 15px;
   }
 }
-/*.hamburger {
-  position: fixed; z-index: 101;
-  top: 30px; left: 30px;
-  padding: 10px; cursor: pointer;
-  width: 40px; height: 30px;
-  .hamburger-lines {
-    &, &:before, &:after {
-      display: block; content: ' ';
-      width: 40px; height: 3px; background: white;
-      position: relative;
-      box-shadow: 0 1px 1px rgba(0,0,0,0.25)
-    }
-    &:before { top: 12px; }
-    &:after { top: 21px; }
-  }
-}
 
-@media (max-width: @mobileWidth) {
-  .hamburger {
-    top: 10px; left: 10px;
-  }
-}*/
 ::-moz-selection {
   background: #9463dd;
   color: white;
