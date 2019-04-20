@@ -1,24 +1,26 @@
 !function(t){
-    var e={};
+    var e = {};
     function i(s){
         if(e[s])return e[s].exports;
-        var o=e[s]={i:s,l:!1,exports:{}};
-        return t[s].call(o.exports,o,o.exports,i),
-            o.l=!0,
-            o.exports}i.m=t,
-            i.c=e,
-            i.d = function(t,e,s){
-        i.o(t,e) || Object.defineProperty(t,e,{enumerable:!0,get:s})
+        var o = e[s] = {i : s, l : !1, exports : {}};
+        return t[s].call(o.exports, o, o.exports, i),
+            o.l = !0,
+            o.exports
+    }
+            i.m = t,
+            i.c = e,
+            i.d = function(t, e, s){
+        i.o(t, e) || Object.defineProperty(t, e, {enumerable : !0, get : s})
             },
         i.r = function(t){
-                "undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}),
+                "undefined"!=typeof Symbol && Symbol.toStringTag && Object.defineProperty(t, Symbol.toStringTag, {value : "Module"}),
                     Object.defineProperty(t,"__esModule",{value:!0})
         },
-        i.t = function(t,e){
-            if(1&e&&(t=i(t)),8&e)return t;
-            if(4&e&&"object"==typeof t&&t&&t.__esModule)return t;
-            var s=Object.create(null);
-            if(i.r(s),Object.defineProperty(s,"default",{enumerable:!0,value:t}),2&e&&"string"!=typeof t)
+        i.t = function(t, e){
+            if(1 & e && ( t= i(t)), 8 & e) return t;
+            if(4 & e && "object" == typeof t && t && t.__esModule)return t;
+            var s = Object.create(null);
+            if(i.r(s), Object.defineProperty(s, "default", {enumerable: !0, value : t}), 2 & e && "string" != typeof t)
 
                 for(var o in t)
 
@@ -35,18 +37,23 @@
             return i.d(e,"a",e),e
         },
         i.o = function(t,e){
-            return Object.prototype.hasOwnProperty.call(t,e)
+            return Object.prototype.hasOwnProperty.call(t, e)
         },
         i.p = "",
-        i(i.s=10)}({ 0 : function(t,e,i){
+        i(i.s = 10)
+}
+({
+    0 : function(t, e, i){
             "use strict";
-            function s(t,e){
+
+            function s(t, e){
                 for(var i in e)
-                    e.hasOwnProperty(i)&&(t[i]=e[i]);
+                    e.hasOwnProperty(i) && (t[i] = e[i]);
                 return t
             }
+
             function o(){
-                return/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)||window.innerWidth<600
+                return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 600
             }
 
             i.d(e,"c",function(){return s}),
@@ -75,17 +82,17 @@
             const l = t => "number" == typeof t ? "#" + ("00000"+t.toString(16)).slice(-6) : t, c = (t, e = 1) => {
                 const i = l(t), s = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(i),
                     o = s ? {r:parseInt(s[1], 16), g : parseInt(s[2], 16), b : parseInt(s[3], 16)} : null;
-                return "rgba("+o.r+","+o.g+","+o.b+","+e+")"
+                return "rgba(" + o.r + "," + o.g + "," + o.b + "," + e + ")"
             }
             },
-    1 : function(t,e,i){
+    1 : function(t, e, i){
             "use strict";
 
             i.d(e, "a", function(){return o});
 
-            var s=i(0);
+            var s = i(0);
 
-            window&&!window.VANTA&&(window.VANTA={version:"0.3.1"});
+            window && !window.VANTA && (window.VANTA = {version:"0.3.1"});
 
             const o = window.VANTA||{};
 
@@ -114,8 +121,8 @@
 
                     for(r = 0; r < this.el.children.length; r++)
                         e = this.el.children[r],
-                        "static" === getComputedStyle(e).position&&(e.style.position="relative"),
-                        "auto" === getComputedStyle(e).zIndex&&(e.style.zIndex = 1);
+                        "static" === getComputedStyle(e).position && (e.style.position = "relative"),
+                        "auto" === getComputedStyle(e).zIndex && (e.style.zIndex = 1);
 
                         "static" === getComputedStyle(this.el).position && (this.el.style.position = "relative"),
                         "object" == typeof THREE && this.initThree(),
@@ -151,7 +158,7 @@
                         background : ""
                     }),
 
-                    Object(s.c)(t.style, e), t.classList.add("vanta-canvas")
+                    Object(s.c)(t.style, e), t.classList.add("anim-canvas")
                 }
 
                 initThree(){
@@ -180,10 +187,9 @@
                         }
 
                 setSize(){
-
-                    this.scale || (this.scale = 1.5),
-                        Object(s.d)() && this.options.scaleMobile ? this.scale = this.options.scaleMobile : this.options.scale && (this.scale = this.options.scale),
-                        this.width = this.el.offsetWidth || window.innerWidth, this.height = this.el.offsetHeight || window.innerHeight
+                    this.scale || (this.scale = 1)
+                        ,
+                        Object(s.d)() && this.options.scale && (this.scale = this.options.scale), this.width = this.el.offsetWidth || window.innerWidth, this.height = this.el.offsetHeight || window.innerHeight;
                 }
 
                 resize(){
@@ -193,7 +199,7 @@
                     this.setSize(),
                     null != (t = this.camera) && (t.aspect = this.width / this.height),
                     null != (e = this.camera) && "function" == typeof e.updateProjectionMatrix && e.updateProjectionMatrix(),
-                    this.renderer && (this.renderer.setSize(this.width, this.height), this.renderer.setPixelRatio(window.devicePixelRatio / this.scale)),
+                    this.renderer && (this.renderer.setSize(this.width, this.height), this.renderer.setPixelRatio(window.devicePixelRatio /* * this.scale*/)),
                     "function" == typeof this.onResize && this.onResize()
                 }
 
@@ -216,7 +222,7 @@
         var s = i(1), o = i(0);
 
         THREE.Color.prototype.getBrightness = function(){
-            return .299 * this.r + .587 * this.g + .114 * this.b
+            return 0.299 * this.r + 0.587 * this.g + 0.114 * this.b
         };
 
         class n extends s.b{
@@ -225,9 +231,9 @@
 
                     color : "#0b200b",
                     backgroundColor : "#205f51",
-                    points : 10,
-                    maxDistance : 20,
-                    spacing : 15,
+                    points : 15,
+                    maxDistance : 25,
+                    spacing : 20,
                     showDots : !0
                 }
             }
@@ -236,7 +242,7 @@
 
                 let s;
                 if(this.points || (this.points = []), this.options.showDots){
-                    const t = new THREE.SphereGeometry(.25, 12, 12), e = new THREE.MeshLambertMaterial({color : this.options.color});
+                    const t = new THREE.SphereGeometry(0.25, 12, 12), e = new THREE.MeshLambertMaterial({color : this.options.color});
                     s = new THREE.Mesh(t, e)
                 } else s = new THREE.Object3D;
 
@@ -255,7 +261,7 @@
                 this.scene.add(this.cont);
 
                 let t = this.options.points,{spacing : e} = this.options;
-                Object(o.d)() && (t=~~(.75 * t), e=~~(.65 * e));
+                Object(o.d)() && (t =~~ (0.75 * t), e =~~ (0.65 * e));
 
                 const i = t * t * 2;
                 this.linePositions = new Float32Array(i * i * 3), this.lineColors = new Float32Array(i * i * 3);
@@ -283,14 +289,14 @@
                             for(let s = 0; s <= t; s++){
                                 const n = Object(o.f)(-3, 3), r = (i - t / 2) * e + Object(o.f)(-5, 5);
                                 let h = (s - t / 2) * e + Object(o.f)(-5, 5);
-                                i % 2 && (h += .5 * e), this.genPoint(r, n - Object(o.f)(5, 15), h), this.genPoint(r + Object(o.f)(-5, 5), n + Object(o.f)(5, 15), h + Object(o.f)(-5, 5))
+                                i % 2 && (h += 0.5 * e), this.genPoint(r, n - Object(o.f)(5, 15), h), this.genPoint(r + Object(o.f)(-5, 5), n + Object(o.f)(5, 15), h + Object(o.f)(-5, 5))
                         }
 
-                        this.camera = new THREE.PerspectiveCamera(25, this.width / this.height, .01, 1e4),
+                        this.camera = new THREE.PerspectiveCamera(25, this.width / this.height, 0.01, 1e4),
                         this.camera.position.set(50, 100, 150),
                         this.scene.add(this.camera);
 
-                const a = new THREE.AmbientLight(16777215, .75);
+                const a = new THREE.AmbientLight(16777215, 0.75);
 
                 return  this.scene.add(a),
                         this.spot = new THREE.SpotLight(16777215, 1),
@@ -306,7 +312,7 @@
 
                 const e = this.camera;
 
-                Math.abs(e.tx - e.position.x) > .01 && (t = e.tx - e.position.x, e.position.x += .02 * t), Math.abs(e.ty - e.position.y) > .01 && (t = e.ty - e.position.y, e.position.y += .02 * t), e.lookAt(new THREE.Vector3(0, 0, 0));
+                Math.abs(e.tx - e.position.x) > 0.01 && (t = e.tx - e.position.x, e.position.x += 0.02 * t), Math.abs(e.ty - e.position.y) > 0.01 && (t = e.ty - e.position.y, e.position.y += 0.02 * t), e.lookAt(new THREE.Vector3(0, 0, 0));
 
                 let i = 0, s = 0, o = 0;
 
@@ -320,7 +326,7 @@
                     var a;
                     const e = this.points[t], c = (this.rayCaster ? this.rayCaster.ray.distanceToPoint(e.position) : 1e3).clamp(5, 15);
 
-                    if(e.scale.x = e.scale.y = e.scale.z = (.25 * (15 - c)).clamp(1, 100), 0 !== e.r){
+                    if(e.scale.x = e.scale.y = e.scale.z = (0.25 * (15 - c)).clamp(1, 100), 0 !== e.r){
                         let t = Math.atan2(e.position.z, e.position.x);
                         a = Math.sqrt(e.position.z * e.position.z + e.position.x * e.position.x), t += 25e-5 * e.r, e.position.x = a * Math.cos(t), e.position.z = a * Math.sin(t)
                     }
@@ -348,7 +354,7 @@
                 return      this.linesMesh.geometry.setDrawRange(0, 2 * o),
                             this.linesMesh.geometry.attributes.position.needsUpdate = !0,
                             this.linesMesh.geometry.attributes.color.needsUpdate = !0,
-                            .001 * this.t
+                            0.001 * this.t
             }
 
             // onMouseMove(t, e){
