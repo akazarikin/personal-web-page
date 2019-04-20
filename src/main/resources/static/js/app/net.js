@@ -229,7 +229,7 @@
             static initClass(){
                 this.prototype.defaultOptions = {
 
-                    color : "#0b200b",
+                    color : "#78cfb6",
                     backgroundColor : "#205f51",
                     points : 15,
                     maxDistance : 25,
@@ -260,7 +260,7 @@
                 this.cont.position.set(0, 0, 0),
                 this.scene.add(this.cont);
 
-                let t = this.options.points,{spacing : e} = this.options;
+                let t = this.options.points, {spacing : e} = this.options;
                 Object(o.d)() && (t =~~ (0.75 * t), e =~~ (0.65 * e));
 
                 const i = t * t * 2;
