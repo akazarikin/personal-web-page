@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">>
+>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -10,6 +10,16 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/style/app/styles.css}">
     <link rel="stylesheet" th:href="@{/style/app/thumbnailAnimation.css}">
+    <script type="text/javascript" src="webjars/jquery/3.2.1/jquery.min.js/"></script>
+    <script type="text/javascript" src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" th:src="@{js/app/three.r92.min.js}"></script>
+    <script type="text/javascript" th:src="@{js/app/net.js}"></script>
+    <script type="text/javascript" th:src="@{js/app/waves.min.js}"></script>
+
+    <script type="text/javascript" th:src="@{js/app/gallery-edided.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/style/app/styles-gallery.css}">
+
 </head>
 <body>
 
@@ -36,13 +46,15 @@
 <!--</nav>-->
 
 <!-- First Container -->
-<div class="container-fluid bg-1 text-center">
-    <h2 class="margin">Who Am I?</h2>
-    <img alt="Alex Kazarikin" title="Alex Kazarikin" th:src="@{/image/foto.png}"
-         class="img-responsive img-circle margin" style="display:inline" width="250" height="250">
-    <h2 style="font-weight: bolder">Alex Kazarikin</h2>
-    <h3>I'm a software developer</h3>
-</div>
+<section class="wm">
+    <div class="container-fluid text-center" style="z-index: 1">
+        <h2 class="margin">Who Am I?</h2>
+        <img alt="Alex Kazarikin" title="Alex Kazarikin" th:src="@{/image/foto.png}"
+             class="img-responsive img-circle margin" style="display:inline" width="300" height="300">
+        <h2 style="font-weight: bolder">Alex Kazarikin</h2>
+        <h3>I'm a software developer</h3>
+    </div>
+</section>
 
 <!--&lt;!&ndash; Second Container &ndash;&gt;-->
 <!--<div class="container-fluid bg-2 text-center">-->
@@ -57,7 +69,7 @@
 
 <!-- Third Container (Grid) -->
 <div class="container-fluid bg-3 text-center">
-    <h2 class="margin">Where To Find Me?</h2><br>
+    <h3 class="margin">Where To Find Me?</h3><br>
     <div class="row">
         <div class="col-sm-4">
             <div class="thumbnail">
@@ -96,14 +108,24 @@
 </div>
 
 <!-- Footer -->
-<footer class="container-fluid bg-4 text-center">
+<footer id="footer" class="container-fluid bg-4 text-center">
     <h3>You can download my resume <a class="highlight-red"
                                       href="/downloads/docs/CV_Aleksey_Kazarikin_Java_BE_Developer.docx">here</a></h3>
 </footer>
 
-<th:block layout:fragment="script"></th:block>
-<script type="text/javascript" src="webjars/jquery/3.2.1/jquery.min.js/"></script>
-<script type="text/javascript" src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <script type="text/javascript" th:src="@{js/app/thumbnailAnimate.js}"></script>
+<!--<th:block layout:fragment="script">-->
+<script>
+    VANTA.WAVES({
+        el: '#footer',
+        color: 0x111111,
+        waveHeight: 50,
+        shininess: 40,
+        waveSpeed: 0.45,
+        zoom: 2
+    })
+</script>
+<!--</th:block>-->
 </body>
 </html>
