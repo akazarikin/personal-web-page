@@ -3,6 +3,7 @@
     /*overflow:hidden;*/
     background-color: inherit;
     border-radius: .5em;
+    box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, .5) !important;
 }
 
 .caption {
