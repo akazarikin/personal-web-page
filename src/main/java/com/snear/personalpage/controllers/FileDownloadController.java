@@ -12,17 +12,14 @@ import java.io.IOException;
 
 
 @RestController
-@RequestMapping("/downloads/docs/")
+@RequestMapping("/download/")
 public class FileDownloadController {
 
     @RequestMapping(value = "CV_Aleksey_Kazarikin_Java_BE_Developer.docx", method = RequestMethod.GET)
-    public InputStreamResource FileSystemResource(HttpServletResponse response, HttpServletRequest request) throws IOException {
+    public InputStreamResource FileSystemResource(HttpServletResponse response) throws IOException {
         response.setContentType("application/msword");
         response.setHeader("Content-Disposition", "attachment; filename=\"CV_Aleksey_Kazarikin_Java_BE_Developer.docx\"");
-
         String pathDownloadFile = "/app/target/classes/static/downloads/docs/CV_Aleksey_Kazarikin_Java_BE_Developer.docx";
-//        System.out.println(pathDownloadFile);
-//        System.out.println(System.getProperty("user.dir"));
         InputStreamResource resource = new InputStreamResource(new FileInputStream(pathDownloadFile));
         return resource;
     }
