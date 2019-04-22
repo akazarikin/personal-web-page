@@ -3,6 +3,6 @@ VANTA.WAVES({
     color: 0xb1b19,
     waveHeight: 30,
     shininess: 15,
-    waveSpeed: 1,
+    waveSpeed: .7,
     zoom: 1
 })
