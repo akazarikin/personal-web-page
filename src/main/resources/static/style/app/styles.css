@@ -136,6 +136,8 @@ body {
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 1) !important;
     top: -1rem;
     bottom: 1rem;
+    margin-right: 1rem;
+    margin-left: 1rem;
 }
 
 .background-table-padding {
@@ -151,8 +153,8 @@ body {
     border-radius: .5em;
 }
 
-#main-image{
-    display:inline;
+#main-image {
+    display: inline;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 1) !important;
 }
 
