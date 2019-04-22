@@ -28,10 +28,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         String[] permittedWithoutAuthorization = Stream
                 .of(
                         "/index",
-                        "/download/docs",
-                        "/en/users/registration/request",
-                        "/en/users/registration/confirmation/**",
-                        "/en/users/login"
+                        "/download/docs"
+//                        ,
+//                        "/en/users/registration/request",
+//                        "/en/users/registration/confirmation/**",
+//                        "/en/users/login"
                 )
                 .toArray(String[]::new);
         http.csrf().disable()

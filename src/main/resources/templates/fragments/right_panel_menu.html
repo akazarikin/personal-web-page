@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    ...
+</head>
+<body>
+<div th:fragment="right_panel_menu" class="col-sm background-table background-table-padding" style="margin-left: 1rem">
+    <div class="container text-center">
+        <h4 class="">Where To Find Me?</h4><br>
+        <div class="collumn">
+            <div class="row-sm-4 margin border border-dark border-custom shadow">
+                <div class="thumbnail">
+                    <a href="skype:alex.snear">
+                        <img th:src="@{/image/skype.png}" class="img-responsive"
+                             style="width:20%; display: inline" alt="Image">
+                        <div class="caption">
+                            <p class="style-refference-social">alex.snear</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="row-sm-4 margin border border-dark border-custom shadow">
+                <div class="thumbnail">
+                    <a href="https://www.linkedin.com/in/akazarikin/">
+                        <img th:src="@{/image/linkedin.png}" class="img-responsive"
+                             style="width:20%; display:inline" alt="Image">
+                        <div class="caption ">
+                            <p class="style-refference-social">linkedin.com/in/akazarikin</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="row-sm-4 margin border border-dark border-custom shadow">
+                <div class="thumbnail">
+                    <a href="mailto:akazarikin@gmail.com">
+                        <img th:src="@{/image/gmail.png}" class="img-responsive"
+                             style="width:20%; display:inline" alt="Image">
+                        <div class="caption">
+                            <p class="style-refference-social">akazarikin@gmail.com</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

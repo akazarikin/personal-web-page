@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    ...
+</head>
+<body>
+<div th:fragment="content">
+    <div class="block-panel">
+        <section class="wm" style="margin-bottom : 3%">
+            <div class="container">
+
+<!--                <div th:replace="fragments/header_navbar :: top_navbar">...</div>-->
+
+                <div class="row">
+
+                    <div th:replace="fragments/left_panel_present :: left_panel_present">...</div>
+
+                    <div th:replace="fragments/right_panel_menu :: right_panel_menu">...</div>
+
+
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- Footer -->
+    <div th:replace="fragments/fragment_footer :: footer" class="block-panel">...</div>
+</div>
+</body>
+</html>

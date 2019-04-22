@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    ...
+</head>
+<body>
+<div th:fragment="left_panel_present" class="col-sm background-table background-table-padding"
+     style="margin-right: 1rem">
+    <h3>Who Am I?</h3>
+    <h2 class="margin" style="font-weight: bolder">Alex Kazarikin</h2>
+    <h5 class="margin">Photo of me:</h5>
+    <div><img id="main-image" alt="Alex Kazarikin" title="Alex Kazarikin"
+              th:src="@{/image/foto.png}"
+              class="img-responsive rounded-circle margin"
+              width="250"
+              height="250">
+    </div>
+    <h2 style="margin-top: 2%">I'm a software developer</h2>
+</div>
+</body>
+</html>
