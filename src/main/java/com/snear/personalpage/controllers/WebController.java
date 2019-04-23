@@ -1,29 +1,36 @@
 package com.snear.personalpage.controllers;
 
+import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import springfox.documentation.schema.Model;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import java.security.Principal;
+import java.net.HttpCookie;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 public class WebController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String index(Principal principal, @CookieValue(value = "myCookieName", defaultValue = "defaultCookieValue") String cookieValue, Model model) {
+    public String index(@RequestHeader HttpHeaders headers, @RequestParam Map<String, String> allParams) {
+        System.out.println("=================================================================================");
+        System.out.println(headers.getLocation());
+        System.out.println("=================================================================================");
+        headers.entrySet().forEach(stringListEntry -> System.out.println(stringListEntry));
+        System.out.println("=================================================================================");
+        System.out.println("=================================================================================");
+        allParams.forEach((s, s2) -> System.out.println("key : " + s + ";  " + "Value : " + s2));
+        System.out.println("=================================================================================");
+        System.out.println("=================================================================================");
 
-        System.out.println(cookieValue);
+//        List<HttpCookie> cookies = HttpCookie.parse(headers.);
+//        cookies.forEach(httpCookie -> System.out.println(httpCookie));
+        System.out.println("=================================================================================");
+        System.out.println("=================================================================================");
 
-        if (principal != null) {
-            System.out.println(principal.toString());
-        } else if (model != null) {
-            System.out.println(model.toString());
-        } else {
-            System.out.println("principal = null");
-        }
 
-//        return principal != null ? "home/homeSignedIn" : "home/homeNotSignedIn";
-        return "index";
+        return "base";
     }
 }
