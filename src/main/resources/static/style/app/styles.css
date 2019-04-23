@@ -137,8 +137,6 @@ body {
     top: -1rem;
     bottom: 1rem;
     margin-top: 1rem;
-    margin-right: 1rem;
-    margin-left: 1rem;
 }
 
 .background-table-padding {
@@ -147,7 +145,21 @@ body {
 }
 
 #top-menu {
-    margin-bottom: 2.2rem;
+    border-radius: .5em;
+    background: rgba(26, 26, 26, .4);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 1) !important;
+    margin-bottom: 1rem;
+
+}
+
+@media only screen and (min-device-width: 480px) {
+    #left-panel {
+        margin-right: 1rem;
+    }
+
+    #right-panel {
+        margin-left: 1rem;
+    }
 }
 
 .border-custom {
