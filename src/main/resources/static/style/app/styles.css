@@ -59,20 +59,20 @@ table span {
     float: left;
 }
 
-.highlight-red {
-    background-color: darkred;
-    color: white;
-    padding-bottom: 5px;
-    padding-top: 0px;
-    text-decoration: none;
-}
+/*.highlight-red {*/
+/*    background-color: darkred;*/
+/*    color: white;*/
+/*    padding-bottom: 5px;*/
+/*    padding-top: 0px;*/
+/*    text-decoration: none;*/
+/*}*/
 
-.highlight-red:hover {
-    background-color: red;
-    color: white;
-    transition: 1s;
-    text-decoration: none;
-}
+/*.highlight-red:hover {*/
+/*    background-color: red;*/
+/*    color: white;*/
+/*    transition: 1s;*/
+/*    text-decoration: none;*/
+/*}*/
 
 body {
     font: 20px Montserrat, sans-serif;
