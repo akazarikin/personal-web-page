@@ -28,10 +28,13 @@
                 <a class="nav-link disabled" href="javascript:void(0)">ip</a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2 shadow text-light"
+
+
+        <form action="https://www.google.com/search" class="form-inline my-2 my-lg-0 searchform" method="get">
+            <input name="sitesearch" type="hidden">
+            <input autocomplete="on" class="form-control search mr-sm-2 shadow text-light" name="q"
                    style=" background: rgba(16, 16, 16, .4);"
-                   type="text" placeholder="Search">
+                   type="text" placeholder="Search" required="required">
         </form>
     </div>
 
