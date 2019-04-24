@@ -171,6 +171,14 @@ body {
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 1) !important;
 }
 
+#img_logo {
+    margin-right: 1rem;
+    margin-left: auto;
+    width: 40px;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 1) !important;
+    opacity: .6;
+}
+
 .block {
     margin-top: 1%;
     margin-bottom: 1%;
