@@ -12,7 +12,7 @@ public class WebController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(@RequestHeader HttpHeaders headers) {
         System.out.println("=============================");
-        System.out.println(headers.getLocation());
+        System.out.println(headers.getHost());
         System.out.println("=============================");
 
         return "base";
