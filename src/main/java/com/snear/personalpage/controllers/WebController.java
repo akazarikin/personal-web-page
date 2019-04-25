@@ -7,19 +7,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 
 @Controller
 public class WebController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String index(@RequestHeader HttpHeaders headers, HttpServletRequest request) {
+    public String index(@RequestHeader HttpHeaders headers, HttpServletRequest request, HttpSession session) {
 
 
-//        Connection connection = new Connection();
         String ip_address_connected_from = request.getRemoteAddr();
-        System.out.println("================================");
-        System.out.println(ip_address_connected_from);
-        System.out.println("================================");
+
+        session.setAttribute("ip_address", "ip: " + ip_address_connected_from);
+
 
         return "base";
     }
