@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     ...
-</head>
+    <title></title></head>
 <body>
 <nav th:fragment="top_navbar" id="top-menu" class="row navbar navbar-expand-lg navbar-dark">
     <a class="mr-auto navbar-brand" href="javascript:void(0)">
@@ -11,25 +11,15 @@
             data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
     </button>
-
-
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0)">Menu</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="javascript:void(0)">Login</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0)">Registration</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link disabled" href="javascript:void(0)">ip</a>
             </li>
         </ul>
-
-
         <form action="https://www.google.com/search" class="form-inline my-2 my-lg-0 searchform" method="get">
             <input name="sitesearch" type="hidden">
             <input autocomplete="on" class="form-control search mr-sm-2 shadow text-light" name="q"
@@ -37,32 +27,6 @@
                    type="text" placeholder="Search" required="required">
         </form>
     </div>
-
-
-    <!--    <ul class="navbar navbar-nav">-->
-    <!--        <li class="nav-item">-->
-    <!--            <a class="nav-link" href="#">Link</a>-->
-    <!--        </li>-->
-    <!--        <li class="nav-item">-->
-    <!--            <a class="nav-link" href="#">Link</a>-->
-    <!--        </li>-->
-    <!--        <li class="nav-item">-->
-    <!--            <a class="nav-link" href="#">Link</a>-->
-    <!--        </li>-->
-    <!--    </ul>-->
-
-    <!--    <div class="my-2 my-lg-0 navbar navbar-expand-sm navbar-dark">-->
-    <!--        <nav class="collapse navbar-collapse" id="collapsibleNavbar">-->
-    <!--            <form class="form-inline my-2 my-lg-0">-->
-    <!--                    <input class="form-control mr-sm-2 shadow text-light"-->
-    <!--                           style=" background: rgba(16, 16, 16, .4);"-->
-    <!--                           type="text" placeholder="Search">-->
-    <!--                &lt;!&ndash;                <button class="btn btn-success my-2 my-sm-0" type="button">Search</button>&ndash;&gt;-->
-    <!--            </form>-->
-    <!--        </nav>-->
-    <!--    </div>-->
-
-
 </nav>
 </body>
 </html>
