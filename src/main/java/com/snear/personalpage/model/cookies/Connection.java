@@ -28,3 +28,4 @@ public class Connection extends BaseEntity {
     private Set<Cookie> cookies = new HashSet<Cookie>();
 
 }
+

@@ -18,6 +18,7 @@ public class Cookie {
     @Column(name = "COOKIE_KEY")
     private String cookie_key;
 
+    @Lob
     @Column(name = "COOKIE_VALUE", length = 100000)
     private String cookie_value;
 
@@ -26,3 +27,4 @@ public class Cookie {
         this.cookie_value = cookie_value;
     }
 }
+
