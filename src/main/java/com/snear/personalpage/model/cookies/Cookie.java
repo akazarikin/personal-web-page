@@ -18,7 +18,8 @@ public class Cookie {
     @Column(name = "COOKIE_KEY")
     private String cookie_key;
 
-    @Column(name = "COOKIE_VALUE", columnDefinition = "TEXT")
+    @Lob
+    @Column(name = "COOKIE_VALUE", columnDefinition = "TEXT", length = 512)
     private String cookie_value;
 
     public Cookie(String cookie_key, String cookie_value) {
