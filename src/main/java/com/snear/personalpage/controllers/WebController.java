@@ -28,16 +28,16 @@ public class WebController {
         session.setAttribute("ip_address", "ip: " + ip_address_connected_from);
 
 
-        Connection connection = new Connection();
-        connection.setIpAddress(ip_address_connected_from);
-
-
-        String cookiesString = headers.get(HttpHeaders.COOKIE).toString();
-        Map<String, String> cookieMap = parseRawCookie(cookiesString);
-        cookieMap.forEach((s, s2) -> connection.getCookies().add(new Cookie(s, s2)));
-
-
-        connectionRepository.save(connection);
+//        Connection connection = new Connection();
+//        connection.setIpAddress(ip_address_connected_from);
+//
+//
+//        String cookiesString = headers.get(HttpHeaders.COOKIE).toString();
+//        Map<String, String> cookieMap = parseRawCookie(cookiesString);
+//        cookieMap.forEach((s, s2) -> connection.getCookies().add(new Cookie(s, s2)));
+//
+//
+//        connectionRepository.save(connection);
 
         return "base";
     }
