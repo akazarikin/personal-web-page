@@ -3,6 +3,7 @@ package com.snear.personalpage.controllers;
 import com.snear.personalpage.model.cookies.Connection;
 import com.snear.personalpage.model.cookies.Cookie;
 import com.snear.personalpage.repositories.ConnectionRepository;
+import com.snear.personalpage.repositories.CookiesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Controller;
@@ -12,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -21,6 +24,9 @@ public class WebController {
     @Autowired
     ConnectionRepository connectionRepository;
 
+    @Autowired
+    CookiesRepository cookiesRepository;
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(@RequestHeader HttpHeaders headers, HttpServletRequest request, HttpSession session) {
 
@@ -28,16 +34,22 @@ public class WebController {
         session.setAttribute("ip_address", "ip: " + ip_address_connected_from);
 
 
-//        Connection connection = new Connection();
-//        connection.setIpAddress(ip_address_connected_from);
-//
-//
-//        String cookiesString = headers.get(HttpHeaders.COOKIE).toString();
-//        Map<String, String> cookieMap = parseRawCookie(cookiesString);
+        Connection connection = new Connection();
+        connection.setIpAddress(ip_address_connected_from);
+
+
+        String cookiesString = headers.get(HttpHeaders.COOKIE).toString();
+        Map<String, String> cookieMap = parseRawCookie(cookiesString);
+
 //        cookieMap.forEach((s, s2) -> connection.getCookies().add(new Cookie(s, s2)));
-//
-//
-//        connectionRepository.save(connection);
+
+        List<Cookie> cookies = new ArrayList<>();
+
+        cookieMap.forEach((s, s2) -> cookies.add(new Cookie(connection, s, s2)));
+
+        connectionRepository.save(connection);
+
+        cookiesRepository.saveAll(cookies);
 
         return "base";
     }

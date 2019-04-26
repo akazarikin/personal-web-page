@@ -4,11 +4,22 @@ spring:
       path: /h2-console
       enabled: true
 
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      show-sql: true
+
+  liquibase:
+    enabled: true
+    change-log: classpath:changelog/changelog-master.xml
+
+
 #  datasource:
-#    url: jdbc:postgresql://ec2-54-75-230-253.eu-west-1.compute.amazonaws.com:5432/d9cs197n8jhccj
+#    url: jdbc:postgresql://ec2-54-247-70-127.eu-west-1.compute.amazonaws.com:5432/dmohrj0k6s4s7
 #    driverClassName: org.postgresql.Driver
-#    username: kbinuqexfaergr
-#    password: 4daab37ba1fec6418d2e5d36ab515c63b2057a9b28d46162cc467a44c7fa58b7
+#    username: peqksetenpjnog
+#    password: 4cc0413eb0a3147923e909b71453de08a278420e3184566d11e6ae5c8e53c1c0
 #  jpa:
 #    hibernate:
 #      ddl-auto: none
