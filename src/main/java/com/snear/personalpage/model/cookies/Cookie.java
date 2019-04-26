@@ -1,19 +1,23 @@
 package com.snear.personalpage.model.cookies;
 
-import lombok.Getter;
-import lombok.Setter;
+import com.snear.personalpage.model.BaseEntity;
+import lombok.*;
 
 import javax.persistence.*;
 
-@Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-@Table(name = "COOKIES")
-public class Cookie {
+@Builder
 
-    @Id
-    @GeneratedValue
-    private Long id;
+@Entity
+@Table(name = "COOKIES")
+public class Cookie extends BaseEntity {
+
+    @JoinColumn(name = "ID_CONNECTION", nullable = false)
+    @ManyToOne
+    private Connection connection;
 
     @Column(name = "COOKIE_KEY")
     private String cookie_key;
@@ -21,8 +25,4 @@ public class Cookie {
     @Column(name = "COOKIE_VALUE")
     private String cookie_value;
 
-    public Cookie(String cookie_key, String cookie_value) {
-        this.cookie_key = cookie_key;
-        this.cookie_value = cookie_value;
-    }
 }

@@ -1,31 +1,24 @@
 package com.snear.personalpage.model.cookies;
 
-
 import com.snear.personalpage.model.BaseEntity;
 import lombok.*;
 
-import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 
-@Entity
-@Table(name = "CONNECTIONS")
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 @Builder
-@EqualsAndHashCode
+
+@Entity
+@Table(name = "CONNECTIONS")
 public class Connection extends BaseEntity {
 
-    @Column(name = "IP_ADDRESS")
+    @Column(name = "IP_ADDRESS", length = 20, nullable = false)
     private String ipAddress;
-
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinTable(name = "connection_Cookie", joinColumns = @JoinColumn(name = "ipAddress"), inverseJoinColumns = @JoinColumn(name = "cookie"))
-//    private List<Cookie> cookies = new ArrayList<>();
-    private Set<Cookie> cookies = new HashSet<Cookie>();
-
 }
 

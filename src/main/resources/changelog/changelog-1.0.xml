@@ -1,0 +1,73 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+
+
+    <changeSet author="Alex.Kaz." id="1">
+
+        <createTable tableName="CONNECTIONS">
+            <column name="ID" type="bigint" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" unique="true"/>
+            </column>
+
+            <column name="IP_ADDRESS" type="varchar(20)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="CREATED_DATE" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="UPDATED_DATE" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+
+
+        <createTable tableName="COOKIES">
+
+            <column name="ID" type="bigint" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" unique="true"/>
+            </column>
+
+            <column name="ID_CONNECTION" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="COOKIE_KEY" type="varchar(255)">
+                <constraints/>
+            </column>
+
+            <column name="COOKIE_VALUE" type="text">
+                <constraints/>
+            </column>
+
+            <column name="CREATED_DATE" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="UPDATED_DATE" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+
+
+        <addForeignKeyConstraint baseTableName="COOKIES" baseColumnNames="ID_CONNECTION"
+
+                                 constraintName="COOKIES_ID_CONNECTION"
+
+                                 referencedTableName="CONNECTIONS" referencedColumnNames="ID"
+
+                                 deferrable="false"
+                                 initiallyDeferred="false"
+                                 onDelete="NO ACTION"
+                                 onUpdate="NO ACTION"/>
+
+    </changeSet>
+
+
+</databaseChangeLog>
