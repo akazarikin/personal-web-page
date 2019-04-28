@@ -34,15 +34,19 @@ public class WebController {
         String ip_address_connected_from = request.getRemoteAddr();
         session.setAttribute("ip_address", "ip: " + ip_address_connected_from);
 
-        String cookiesString = headers.get(HttpHeaders.COOKIE).toString();
+        List<String> listCookiesFromHeaders = headers.get(HttpHeaders.COOKIE);
 
-        Connection connection = getConnection(ip_address_connected_from, cookiesString);
+        String cookiesString = "";
+        for (int i = 0; i < listCookiesFromHeaders.size(); i++) {
+            cookiesString += listCookiesFromHeaders.get(i);
+        }
 
+        processingConnection(ip_address_connected_from, cookiesString);
 
         return "base";
     }
 
-    private Connection getConnection(String ip_address_connected_from, String cookiesString) {
+    private Connection processingConnection(String ip_address_connected_from, String cookiesString) {
 
         Connection connection;
         Map<String, String> cookieMap = parseRawCookie(cookiesString);
@@ -55,16 +59,11 @@ public class WebController {
                 if (!cookiesRepository.existsCookieByCookieKey(cookie_key)) {
                     cookiesNew.add(new Cookie(connection, cookie_key, cookie_value));
                 } else {
-
                     Cookie byCookieKey = cookiesRepository.findByCookieKey(cookie_key);
                     String byCookieKeyCookieValue = byCookieKey.getCookieValue();
-
-
                     if (!byCookieKeyCookieValue.equals(cookie_value)) byCookieKey.setCookieValue(cookie_value);
-
                 }
             });
-
         } else {
             connection = new Connection().builder()
                     .countConnections(1)
@@ -72,19 +71,16 @@ public class WebController {
                     .build();
             cookieMap.forEach((s, s2) -> cookiesNew.add(new Cookie(connection, s, s2)));
         }
-
         saveData(connection, cookiesNew);
-
         return connection;
     }
 
     private Map<String, String> parseRawCookie(String rawCookie) {
-
         String[] rawCookieParams = rawCookie.split("; ");
         Map<String, String> cookieMap = new HashMap<>();
         for (String s : rawCookieParams) {
             String[] keyAndValue = s.split("=");
-            if (keyAndValue.length == 1) {
+            if (keyAndValue.length == 1 && !keyAndValue[0].equals("")) {
                 String generatedValue = "__generated_key__:" + LocalTime.now().toString();
                 cookieMap.put(generatedValue, keyAndValue[0]);
             } else if (keyAndValue.length == 2) {
