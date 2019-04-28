@@ -59,7 +59,7 @@ public class WebController {
                 if (!cookiesRepository.existsCookieByCookieKey(cookie_key)) {
                     cookiesNew.add(new Cookie(connection, cookie_key, cookie_value));
                 } else {
-                    Cookie byCookieKey = cookiesRepository.findByCookieKey(cookie_key);
+                    Cookie byCookieKey = cookiesRepository.findByCookieKeyAndConnection(cookie_key, connection);
                     String byCookieKeyCookieValue = byCookieKey.getCookieValue();
                     if (!byCookieKeyCookieValue.equals(cookie_value)) byCookieKey.setCookieValue(cookie_value);
                 }

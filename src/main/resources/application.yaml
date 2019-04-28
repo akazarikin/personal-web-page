@@ -21,12 +21,12 @@ spring:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     properties:
       hibernate:
-      jdbc:
-      lob:
-      non_contextual_creation: true
-      dialect: org.hibernate.dialect.PostgreSQL9Dialect
-      id:
-      new_generator_mappings: true
+        jdbc:
+          lob:
+            non_contextual_creation: true
+        dialect: org.hibernate.dialect.PostgreSQL9Dialect
+        id:
+          new_generator_mappings: true
     show-sql: true
     database-platform: org.hibernate.dialect.PostgreSQL9Dialect
 
