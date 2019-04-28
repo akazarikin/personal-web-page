@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface CookiesRepository extends JpaRepository<Cookie, Long> {
     boolean existsCookieByCookieKey(String s);
-    Cookie findByCookieKey(String s);
+    Cookie findByCookieKeyAndConnection(String s, Connection connection);
 
     boolean existsCookieByCookieValue(String s);
 
