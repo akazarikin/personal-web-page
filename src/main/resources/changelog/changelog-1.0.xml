@@ -16,6 +16,10 @@
                 <constraints nullable="false"/>
             </column>
 
+            <column name="COUNT_CONNECTIONS" type="int">
+                <constraints nullable="false"/>
+            </column>
+
             <column name="CREATED_DATE" type="datetime">
                 <constraints nullable="false"/>
             </column>
@@ -29,7 +33,7 @@
 
         <createTable tableName="COOKIES">
 
-            <column name="ID" type="bigint" autoIncrement="true">
+            <column name="ID_COOKIE" type="bigint" autoIncrement="true">
                 <constraints nullable="false" primaryKey="true" unique="true"/>
             </column>
 
@@ -38,19 +42,11 @@
             </column>
 
             <column name="COOKIE_KEY" type="varchar(255)">
-                <constraints/>
+                <constraints uniqueConstraintName="ID_CONNECTION"/>
             </column>
 
             <column name="COOKIE_VALUE" type="text">
                 <constraints/>
-            </column>
-
-            <column name="CREATED_DATE" type="datetime">
-                <constraints nullable="false"/>
-            </column>
-
-            <column name="UPDATED_DATE" type="datetime">
-                <constraints nullable="false"/>
             </column>
 
         </createTable>

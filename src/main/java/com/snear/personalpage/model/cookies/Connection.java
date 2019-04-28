@@ -13,6 +13,7 @@ import javax.persistence.Table;
 @Getter
 @Setter
 @Builder
+//@ToString
 
 @Entity
 @Table(name = "CONNECTIONS")
@@ -20,5 +21,12 @@ public class Connection extends BaseEntity {
 
     @Column(name = "IP_ADDRESS", length = 20, nullable = false)
     private String ipAddress;
+
+    @Column(name = "COUNT_CONNECTIONS", nullable = false)
+    private int countConnections;
+
+    public void incrementCount() {
+        countConnections++;
+    }
 }
 

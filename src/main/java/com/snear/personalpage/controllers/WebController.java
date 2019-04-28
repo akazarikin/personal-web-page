@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -33,37 +34,59 @@ public class WebController {
         String ip_address_connected_from = request.getRemoteAddr();
         session.setAttribute("ip_address", "ip: " + ip_address_connected_from);
 
-
-        Connection connection = new Connection();
-        connection.setIpAddress(ip_address_connected_from);
-
-
         String cookiesString = headers.get(HttpHeaders.COOKIE).toString();
-        Map<String, String> cookieMap = parseRawCookie(cookiesString);
 
-//        cookieMap.forEach((s, s2) -> connection.getCookies().add(new Cookie(s, s2)));
+        Connection connection = getConnection(ip_address_connected_from, cookiesString);
 
-        List<Cookie> cookies = new ArrayList<>();
-
-        cookieMap.forEach((s, s2) -> cookies.add(new Cookie(connection, s, s2)));
-
-        connectionRepository.save(connection);
-
-        cookiesRepository.saveAll(cookies);
 
         return "base";
     }
 
+    private Connection getConnection(String ip_address_connected_from, String cookiesString) {
+
+        Connection connection;
+        Map<String, String> cookieMap = parseRawCookie(cookiesString);
+        List<Cookie> cookiesNew = new ArrayList<>();
+
+        if (connectionRepository.existsConnectionByIpAddress(ip_address_connected_from)) {
+            connection = connectionRepository.findConnectionByIpAddress(ip_address_connected_from);
+            connection.incrementCount();
+            cookieMap.forEach((cookie_key, cookie_value) -> {
+                if (!cookiesRepository.existsCookieByCookieKey(cookie_key)) {
+                    cookiesNew.add(new Cookie(connection, cookie_key, cookie_value));
+                } else {
+
+                    Cookie byCookieKey = cookiesRepository.findByCookieKey(cookie_key);
+                    String byCookieKeyCookieValue = byCookieKey.getCookieValue();
+
+
+                    if (!byCookieKeyCookieValue.equals(cookie_value)) byCookieKey.setCookieValue(cookie_value);
+
+                }
+            });
+
+        } else {
+            connection = new Connection().builder()
+                    .countConnections(1)
+                    .ipAddress(ip_address_connected_from)
+                    .build();
+            cookieMap.forEach((s, s2) -> cookiesNew.add(new Cookie(connection, s, s2)));
+        }
+
+        saveData(connection, cookiesNew);
+
+        return connection;
+    }
 
     private Map<String, String> parseRawCookie(String rawCookie) {
 
         String[] rawCookieParams = rawCookie.split("; ");
         Map<String, String> cookieMap = new HashMap<>();
-
         for (String s : rawCookieParams) {
             String[] keyAndValue = s.split("=");
             if (keyAndValue.length == 1) {
-                cookieMap.put(null, keyAndValue[0]);
+                String generatedValue = "__generated_key__:" + LocalTime.now().toString();
+                cookieMap.put(generatedValue, keyAndValue[0]);
             } else if (keyAndValue.length == 2) {
                 cookieMap.put(keyAndValue[0], keyAndValue[1]);
             } else if (keyAndValue.length > 2) {
@@ -73,8 +96,11 @@ public class WebController {
                 cookieMap.put(keyAndValue[0], keyAndValue[1]);
             }
         }
-
         return cookieMap;
     }
 
+    private void saveData(Connection connection, List<Cookie> cookies) {
+        connectionRepository.save(connection);
+        if (!cookies.isEmpty()) cookiesRepository.saveAll(cookies);
+    }
 }
