@@ -185,3 +185,7 @@ body {
     margin-left: 6%;
     margin-right: 6%;
 }
+
+.style-for-canvas-when-not-loaded{
+    background: rgba(47, 47, 47, 0.95);
+}
