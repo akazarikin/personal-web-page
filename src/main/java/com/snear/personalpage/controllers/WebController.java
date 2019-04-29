@@ -10,8 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.context.request.ServletWebRequest;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -20,33 +20,40 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-public class WebController {
+class WebController {
 
     @Autowired
-    ConnectionRepository connectionRepository;
+    private ConnectionRepository connectionRepository;
 
     @Autowired
-    CookiesRepository cookiesRepository;
+    private CookiesRepository cookiesRepository;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String index(@RequestHeader HttpHeaders headers, HttpServletRequest request, HttpSession session) {
+    public String index(@RequestHeader HttpHeaders headers, ServletWebRequest request, HttpSession session) {
 
-        String ip_address_connected_from = request.getRemoteAddr();
-        session.setAttribute("ip_address", "ip: " + ip_address_connected_from);
+        String ip_address_connected_from = request.getRequest().getRemoteAddr();
 
-        List<String> listCookiesFromHeaders = headers.get(HttpHeaders.COOKIE);
-
-        String cookiesString = "";
-        for (int i = 0; i < listCookiesFromHeaders.size(); i++) {
-            cookiesString += listCookiesFromHeaders.get(i);
+        if (ip_address_connected_from.equals("0:0:0:0:0:0:0:1")) {
+            session.setAttribute("ip_address", "Connected from localhost");
+            return "base";
+        } else if (ip_address_connected_from.equals("")) {
+            session.setAttribute("ip_address", "Your ip is not available");
+            return "base";
         }
-
-        processingConnection(ip_address_connected_from, cookiesString);
+        session.setAttribute("ip_address", "ip: " + ip_address_connected_from);
+        List<String> listCookiesFromHeaders = headers.get(HttpHeaders.COOKIE);
+        StringBuilder cookiesString = new StringBuilder();
+        if (listCookiesFromHeaders != null) {
+            for (String s : listCookiesFromHeaders) {
+                cookiesString.append(s);
+            }
+        }
+        processingConnection(ip_address_connected_from, cookiesString.toString());
 
         return "base";
     }
 
-    private Connection processingConnection(String ip_address_connected_from, String cookiesString) {
+    private void processingConnection(String ip_address_connected_from, String cookiesString) {
 
         Connection connection;
         Map<String, String> cookieMap = parseRawCookie(cookiesString);
@@ -65,17 +72,19 @@ public class WebController {
                 }
             });
         } else {
-            connection = new Connection().builder()
+            connection = Connection.builder()
                     .countConnections(1)
                     .ipAddress(ip_address_connected_from)
                     .build();
             cookieMap.forEach((s, s2) -> cookiesNew.add(new Cookie(connection, s, s2)));
         }
+
         saveData(connection, cookiesNew);
-        return connection;
+
     }
 
     private Map<String, String> parseRawCookie(String rawCookie) {
+
         String[] rawCookieParams = rawCookie.split("; ");
         Map<String, String> cookieMap = new HashMap<>();
         for (String s : rawCookieParams) {
@@ -92,11 +101,14 @@ public class WebController {
                 cookieMap.put(keyAndValue[0], keyAndValue[1]);
             }
         }
+
         return cookieMap;
     }
 
     private void saveData(Connection connection, List<Cookie> cookies) {
+
         connectionRepository.save(connection);
         if (!cookies.isEmpty()) cookiesRepository.saveAll(cookies);
+
     }
 }
