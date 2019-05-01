@@ -33,8 +33,9 @@ class WebController {
 
         String ip_address_connected_from = request.getRequest().getRemoteAddr();
 
-        if (ip_address_connected_from.equals("0:0:0:0:0:0:0:1")) {
+        if (ip_address_connected_from.equals("127.0.0.1") || ip_address_connected_from.equals("0:0:0:0:0:0:0:1")) {
             session.setAttribute("ip_address", "Connected from localhost");
+            System.getProperties().forEach((o, o2) -> System.out.println(o.toString() + "--------" + o2));
             return "base";
         } else if (ip_address_connected_from.equals("")) {
             session.setAttribute("ip_address", "Your ip is not available");

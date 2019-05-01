@@ -1,18 +1,18 @@
-version: '3.3'
-services:
-  personalpage-web:
-    image: // TODO
-    ports:
-      - "8080:8080"
-    container_name: // TODO
-    restart: always
-    env_file:
-      - personalpage-env-vars.env
-    depends_on:
-      - personalpage-db
-
-  personalpage-db:
-    ports:
-      - "5432:5432"
-    env_file:
-      - personalpage-env-vars.env
+#version: '3.3'
+#services:
+#  personalpage-web:
+#    image: // TODO
+#    ports:
+#      - "8080:8080"
+#    container_name: // TODO
+#    restart: always
+#    env_file:
+#      - personalpage-env-vars.env
+#    depends_on:
+#      - personalpage-db
+#
+#  personalpage-db:
+#    ports:
+#      - "5432:5432"
+#    env_file:
+#      - personalpage-env-vars.env

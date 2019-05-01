@@ -15,7 +15,7 @@ import java.io.IOException;
 public class FileDownloadController {
 
     @RequestMapping(value = "resume", method = RequestMethod.GET)
-    public void FileSystemResource(HttpServletResponse response) throws IOException {
+    public void FileSystemResource(HttpServletResponse response) {
 
         response.setContentType("application/msword");
         response.setHeader("Content-Disposition", "attachment; filename=\"CV_Aleksey_Kazarikin_Java_BE_Developer.docx\"");
@@ -30,7 +30,7 @@ public class FileDownloadController {
 
         } catch (IOException ex) {
             System.out.println("Error writing file to output stream. Filename ");
-            throw new RuntimeException("IOError writing file to output stream");
+            throw new RuntimeException("IOError writing file to output stream"); //TODO Logger
         }
 
     }

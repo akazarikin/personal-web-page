@@ -18,6 +18,7 @@
     </parent>
 
     <properties>
+        <docker.image.prefix>snear</docker.image.prefix>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
@@ -45,7 +46,6 @@
             <artifactId>thymeleaf-layout-dialect</artifactId>
             <version>2.0.5</version>
         </dependency>
-
 
         <!--    ************    Thymeleaf dependency  **************   -->
 
@@ -160,14 +160,6 @@
 
         <!-- *************** Liquibase dependency ****************-->
 
-        <!--        &lt;!&ndash; https://mvnrepository.com/artifact/com.google.api-client/google-api-client-appengine &ndash;&gt;-->
-        <!--        <dependency>-->
-        <!--            <groupId>com.google.api-client</groupId>-->
-        <!--            <artifactId>google-api-client-appengine</artifactId>-->
-        <!--            <version>1.28.0</version>-->
-        <!--        </dependency>-->
-
-
     </dependencies>
 
     <build>
@@ -176,6 +168,48 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>dockerfile-maven-plugin</artifactId>
+                <version>1.4.9</version>
+                <configuration>
+                    <useMavenSettingsForAuth>true</useMavenSettingsForAuth>
+                    <repository>${docker.image.prefix}/${project.artifactId}</repository>
+
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>default</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>build</goal>
+                            <!--<goal>push</goal>-->
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>unpack</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>${project.groupId}</groupId>
+                                    <artifactId>${project.artifactId}</artifactId>
+                                    <version>${project.version}</version>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
