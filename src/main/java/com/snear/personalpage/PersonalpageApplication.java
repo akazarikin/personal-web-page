@@ -24,6 +24,14 @@ public class PersonalpageApplication {
         Integer delay = Integer.parseInt(envDelayInSeconds);
 
         System.out.println(String.format("Pausing system for %s seconds", delay));
+
+        String ENV_PORT = System.getenv().get("PORT");
+        String ENV_DYNO = System.getenv().get("DYNO");
+
+        if (ENV_PORT != null && ENV_DYNO != null) {
+            System.getProperties().put("server.port", ENV_PORT);
+        }
+
         for (int i = 0; i < delay; i++) {
             System.out.println(String.format("%s..", (delay - i)));
             Thread.sleep(1000);
