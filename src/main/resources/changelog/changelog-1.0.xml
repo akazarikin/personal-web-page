@@ -42,7 +42,6 @@
             </column>
 
             <column name="COOKIE_KEY" type="varchar(255)">
-                <constraints uniqueConstraintName="ID_CONNECTION"/>
             </column>
 
             <column name="COOKIE_VALUE" type="text">
