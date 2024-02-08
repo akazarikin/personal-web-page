@@ -49,7 +49,7 @@ class WebController {
                 cookiesString.append(s);
             }
         }
-        processingConnection(ip_address_connected_from, cookiesString.toString());
+        //processingConnection(ip_address_connected_from, cookiesString.toString());
 
         return "base";
     }
