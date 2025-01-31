@@ -79,11 +79,11 @@
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-		<!-- <dependency> -->
-			<!-- <groupId>org.postgresql</groupId> -->
-			<!-- <artifactId>postgresql</artifactId> -->
-			<!-- <scope>runtime</scope> -->
-		<!-- </dependency> -->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<scope>runtime</scope>
+		</dependency>
 
 		<!-- Lombok -->
 		<dependency>
@@ -126,11 +126,11 @@
 		</dependency>
 
 		<!-- Liquibase -->
-		<!-- <dependency> -->
-			<!-- <groupId>org.liquibase</groupId> -->
-			<!-- <artifactId>liquibase-core</artifactId> -->
-			<!-- <version>4.17.2</version> <!-- Совместимая версия с Spring Boot 2.7.x --> -->
-		<!-- </dependency> -->
+		<dependency>
+			<groupId>org.liquibase</groupId>
+			<artifactId>liquibase-core</artifactId>
+			<version>4.17.2</version> <!-- Совместимая версия с Spring Boot 2.7.x -->
+		</dependency>
 
 		<!-- WebJars -->
 		<dependency>
